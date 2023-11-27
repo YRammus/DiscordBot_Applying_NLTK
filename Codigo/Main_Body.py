@@ -12,7 +12,37 @@ from nltk import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 
 
-stopwords = set(stopwords.words('english'))
+stopwords = set(stopwords.words('english'))greetings = [
+    'hi', 'hey', 'hello', 'good morning', 'good afternoon', 'good evening', 'greetings',
+    'what\'s up', 'howdy', 'hey there', 'yo', 'hi there', 'hiya', 'hey hey', 'sup',
+    'how\'s it going', 'hi friend', 'hola', 'bonjour', 'ciao', 'hey dude'
+]
+
+responses = {
+    'hi': 'Heyyy!',
+    'hey': 'Hello there!',
+    'hello': 'Hi! How can I assist you?',
+    'good morning': 'Good morning! How can I help you today?',
+    'good afternoon': 'Good afternoon! What can I do for you?',
+    'good evening': 'Good evening! Ready for a chat?',
+    'greetings': 'Greetings! What\'s on your mind?',
+    'what\'s up': 'Not much, just here and ready to chat. What\'s up with you?',
+    'howdy': 'Howdy! Ready for a good conversation?',
+    'yo': 'Yo! What\'s going on?',
+    'hi there': 'Hello! How can I brighten your day?',
+    'hiya': 'Hiya! Ready to talk about anything?',
+    'hey hey': 'Hey hey! What\'s the latest?',
+    'sup': 'Sup! Anything exciting happening?',
+    'how\'s it going': 'It\'s going well, thanks for asking! How about you?',
+    'hi friend': 'Hello, friend! What brings you here?',
+    'hey dude': 'Hey dude! What\'s on your mind?',
+    'how are you': 'I\'m doing well, thanks for asking!',
+    'tell me a joke': 'Why don\'t scientists trust atoms? Because they make up everything!',
+    'what is your favorite color': 'I like all colors, but if I had to choose, I\'d say dragon green!',
+
+}
+
+
 
 
 class MyClient(discord.Client):
