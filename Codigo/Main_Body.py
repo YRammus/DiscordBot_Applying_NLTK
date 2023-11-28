@@ -12,7 +12,8 @@ from nltk import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 
 
-stopwords = set(stopwords.words('english'))greetings = [
+stopwords = set(stopwords.words('english'))
+greetings = [
     'hi', 'hey', 'hello', 'good morning', 'good afternoon', 'good evening', 'greetings',
     'what\'s up', 'howdy', 'hey there', 'yo', 'hi there', 'hiya', 'hey hey', 'sup',
     'how\'s it going', 'hi friend', 'hola', 'bonjour', 'ciao', 'hey dude'
@@ -40,6 +41,11 @@ responses = {
     'tell me a joke': 'Why don\'t scientists trust atoms? Because they make up everything!',
     'what is your favorite color': 'I like all colors, but if I had to choose, I\'d say dragon green!',
 
+
+    'how are you': 'Never get bad',
+    'I\'m fine': 'Nice nice',
+    'Cool': 'Nice nice',
+
 }
 
 
@@ -54,12 +60,16 @@ class MyClient(discord.Client):
 		box =  word_tokenize(message.content)
 		sentence = sent_tokenize(message.content)
 		words = StopWords(box, sentence)
-		for i in range(len(words)):
-			words[i] = words[i].upper()
-			if words[i] in ['HI', 'HEY'] or words[i] == ['GOOD'] and words[i+1] == ["MORNING"]:
-				for j in words:
-					if j.upper() == 'TOHRU':
-						await message.channel.send(f'Heyyy {message.author.name}')
+		for greeting in greetings:
+			if greeting in message.content and 'tohru' in words:
+				await message.channel.send('{}'.format(responses[greeting]))
+#			await message.channel.send(f'responses{greeting}')
+#		for i in range(len(words)):
+#			words[i] = words[i].upper()
+#			if words[i] in ['HI', 'HEY'] or words[i] == ['GOOD'] and words[i+1] == ["MORNING"]:
+#				for j in words:
+#					if j.upper() == 'TOHRU':
+#						await message.channel.send(f'Heyyy {message.author.name}')
 
 
 
@@ -68,7 +78,7 @@ def StopWords(wrds, sentences):
 	for w in wrds:
 		if w not in stopwords:
 
-			final_text.append(w)
+			final_text.append(w.lower())
 	print("texto processado {} \n {}".format(final_text, sentences))
 	return final_text
 ##                      await message.channel.send(f'salveee {message.author.name}')
@@ -78,4 +88,4 @@ def StopWords(wrds, sentences):
 #MAIN CODE
 if __name__ == "__main__":
 	client = MyClient(intents=intents)
-	client.run('Your Token Id')
+	client.run('MTA3NzYyNDMzMTc0OTgxODM5OA.Gdz2ex.rm-wKxtxrAPNJ-XpdeIXB3YeWl05qDAWA6brLU')
