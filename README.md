@@ -8,3 +8,4 @@
 
 ## Como Funciona? 
 > O main inicia o bot de acordo com o Token que você tem e,então, uma função assincrona começa a ser executada dentro da classe nomeada 'Meu Cliente'. Onde assim que uma mensagem for enviada, sua mensagem será exibida e tratada.
+> Essa primeira versão não terá foco em entender e/ou formular sentenças, vai se limitar a usar sentenças e conjuntos pré montados. 
